@@ -6,7 +6,7 @@ Tensorflow implementation of DeepMind's Tacotron-2. A deep neural network archit
 Для обучения модели использовался [M-AILABS Russian speech dataset](https://www.caito.de/2019/01/the-m-ailabs-speech-dataset/) содержащий 9ч 58м записи речи.
 
 # Результаты:
-Результаты после обучения модели после 200000 шагов.
+Результаты обучения модели после 200000 шагов.
 
 Фразы из обучающей выборки:
 [1 linear](https://github.com/garlic-shake/Tacotron-2/raw/master/tacotron_output/logs-eval/wavs/wav-batch_0_sentence_0-linear.wav)
