@@ -1,0 +1,9 @@
+Она медленно отворила люк. Нежилой запах, холод.|tacotron_output/eval\mel-batch_0_sentence_0.npy|<no_g>
+Каждую ночь, ложась спать, я отодвигаю в сторону своё привычное небытие|tacotron_output/eval\mel-batch_1_sentence_0.npy|<no_g>
+Графиня прижала палец к губам.|tacotron_output/eval\mel-batch_2_sentence_0.npy|<no_g>
+Но год советской власти научил Любочку верить в чудеса и ни в чём себе не отказывать. Она поняла, что в жизни возможно абсолютно всё: главное - иметь что-то.|tacotron_output/eval\mel-batch_3_sentence_0.npy|<no_g>
+Ясность ума меркнет: уважение к чистоте, к невинности - всё уносит вихрь.|tacotron_output/eval\mel-batch_4_sentence_0.npy|<no_g>
+Какой славный кофе! Кто это варит?|tacotron_output/eval\mel-batch_5_sentence_0.npy|<no_g>
+Что ж это такое? Расскажи, пожалуйста, как?|tacotron_output/eval\mel-batch_6_sentence_0.npy|<no_g>
+Комната, где лежал Илья Ильич, с первого взгляда казалась прекрасно убранною.|tacotron_output/eval\mel-batch_7_sentence_0.npy|<no_g>
+Возвращение к началу называется покоем, а покой называется возвращением к сущности. Возвращение к сущности называется постоянством.|tacotron_output/eval\mel-batch_8_sentence_0.npy|<no_g>
