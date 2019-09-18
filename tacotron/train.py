@@ -180,7 +180,7 @@ def train(log_dir, args, hparams):
 	step = 0
 	time_window = ValueWindow(100)
 	loss_window = ValueWindow(100)
-	saver = tf.train.Saver(max_to_keep=20)
+	saver = tf.train.Saver(max_to_keep=5)
 
 	log('Tacotron training set to a maximum of {} steps'.format(args.tacotron_train_steps))
 
@@ -237,7 +237,7 @@ def train(log_dir, args, hparams):
 					log('\nWriting summary at step {}'.format(step))
 					summary_writer.add_summary(sess.run(stats), step)
 
-				if step % args.eval_interval == 0:
+				if step % args.eval_interval == 0 and False:
 					#Run eval and save eval stats
 					log('\nRunning evaluation at step {}'.format(step))
 
@@ -371,7 +371,8 @@ def train(log_dir, args, hparams):
 					#save alignment plot to disk (control purposes)
 					plot.plot_alignment(alignment, os.path.join(plot_dir, 'step-{}-align.png'.format(step)),
 						title='{}, {}, step={}, loss={:.5f}'.format(args.model, time_string(), step, loss),
-						max_len=target_length // hparams.outputs_per_step)
+						max_len=target_length // hparams.outputs_per_step,
+						text=sequence_to_text(input_seq))
 					#save real and predicted mel-spectrogram plot to disk (control purposes)
 					plot.plot_spectrogram(mel_prediction, os.path.join(plot_dir, 'step-{}-mel-spectrogram.png'.format(step)),
 						title='{}, {}, step={}, loss={:.5f}'.format(args.model, time_string(), step, loss), target_spectrogram=target,

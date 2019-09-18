@@ -13,27 +13,32 @@ def split_title_line(title_text, max_words=5):
 	seq = title_text.split()
 	return '\n'.join([' '.join(seq[i:i + max_words]) for i in range(0, len(seq), max_words)])
 
-def plot_alignment(alignment, path, title=None, split_title=False, max_len=None):
+def plot_alignment(alignment, path, title=None, split_title=False, max_len=None, text=None):
 	if max_len is not None:
 		alignment = alignment[:, :max_len]
 
-	fig = plt.figure(figsize=(8, 6))
+	char_len, audio_len = alignment.shape
+
+	scale = max(char_len/40, 1)
+	fig = plt.figure(figsize=(4 * scale, 6))
 	ax = fig.add_subplot(111)
 
 	im = ax.imshow(
-		alignment,
+		alignment.T,
 		aspect='auto',
 		origin='lower',
 		interpolation='none')
 	fig.colorbar(im, ax=ax)
-	xlabel = 'Decoder timestep'
 
 	if split_title:
 		title = split_title_line(title)
 
-	plt.xlabel(xlabel)
+	if text is not None:
+		plt.xticks(range(char_len), text)
+
+	plt.ylabel('Decoder timestep')
 	plt.title(title)
-	plt.ylabel('Encoder timestep')
+	plt.xlabel('Encoder timestep')
 	plt.tight_layout()
 	plt.savefig(path, format='png')
 	plt.close()

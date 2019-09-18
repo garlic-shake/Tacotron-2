@@ -211,7 +211,7 @@ class Synthesizer:
 
 				#save alignments
 				plot.plot_alignment(alignments[i], os.path.join(log_dir, 'plots/alignment-{}.png'.format(basenames[i])),
-					title='{}'.format(texts[i]), split_title=True, max_len=target_lengths[i])
+					title='{}'.format(texts[i]), split_title=True, max_len=target_lengths[i], text=texts[i])
 
 				#save mel spectrogram plot
 				plot.plot_spectrogram(mel, os.path.join(log_dir, 'plots/mel-{}.png'.format(basenames[i])),

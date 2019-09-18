@@ -113,7 +113,7 @@ class Tacotron():
 					self.embedding_table = tf.get_variable(
 						'inputs_embedding', [len(symbols), hp.embedding_dim], dtype=tf.float32)
 					embedded_inputs = tf.nn.embedding_lookup(self.embedding_table, tower_inputs[i])
-
+					
 
 					#Encoder Cell ==> [batch_size, encoder_steps, encoder_lstm_units]
 					encoder_cell = TacotronEncoderCell(
@@ -313,8 +313,10 @@ class Tacotron():
 					else:
 						# Compute loss of predictions before postnet
 						before = tf.losses.mean_squared_error(self.tower_mel_targets[i], self.tower_decoder_output[i])
+						#before = tf.reduce_mean(tf.abs(self.tower_mel_targets[i] - self.tower_decoder_output[i]))
 						# Compute loss after postnet
 						after = tf.losses.mean_squared_error(self.tower_mel_targets[i], self.tower_mel_outputs[i])
+						#after = tf.reduce_mean(tf.abs(self.tower_mel_targets[i] - self.tower_mel_outputs[i]))
 						#Compute <stop_token> loss (for learning dynamic generation stop)
 						stop_token_loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(
 							labels=self.tower_stop_token_targets[i],
