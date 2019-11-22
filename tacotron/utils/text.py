@@ -64,8 +64,9 @@ def _clean_text(text, cleaner_names):
 
 
 def _symbols_to_sequence(symbols):
-  return [_symbol_to_id[s] for s in symbols if _should_keep_symbol(s)]
-
+  # return [_symbol_to_id[s] for s in symbols if _should_keep_symbol(s)]
+  return [_symbol_to_id[s] if ((i + 1) >= len(symbols) or (symbols[i + 1] != '́')) else _symbol_to_id[s + '́'] for i, s
+          in enumerate(symbols) if _should_keep_symbol(s)]
 
 def _arpabet_to_sequence(text):
   return _symbols_to_sequence(['@' + s for s in text.split()])
@@ -73,3 +74,12 @@ def _arpabet_to_sequence(text):
 
 def _should_keep_symbol(s):
   return s in _symbol_to_id and s is not '_' and s is not '~'
+
+def sequence_to_letters(sequence):
+  '''Converts a sequence of IDs back to a string'''
+  result = []
+  for symbol_id in sequence:
+    if symbol_id in _id_to_symbol:
+      s = _id_to_symbol[symbol_id]
+      result.append(s)
+  return result
