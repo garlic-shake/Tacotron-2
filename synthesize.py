@@ -24,8 +24,8 @@ def prepare_run(args):
 
 def get_sentences(args):
 	if args.text_list != '':
-		with open(args.text_list, 'rb') as f:
-			sentences = list(map(lambda l: l.decode("utf-8")[:-1], f.readlines()))
+		with open(args.text_list, 'r', encoding="utf-8") as f:
+			sentences = list(map(lambda l: l.rstrip(), f.readlines()))
 	else:
 		sentences = hparams.sentences
 	return sentences
